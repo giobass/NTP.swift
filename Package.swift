@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "NTP",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v12),
         .macOS(.v12)
     ],
     products: [
