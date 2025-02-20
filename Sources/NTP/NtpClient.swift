@@ -89,7 +89,7 @@ open class NtpClient {
     /// - Parameter url: The URL of the NTP server.
     /// - Returns: The current date as provided by the NTP server.
     /// - Throws: An error if the request fails.
-    @available(iOS 13, *)
+    @available(iOS 13.0, *)
     open func request(_ url: URL) async throws -> Date {
         try await withCheckedThrowingContinuation { continuation in
             request(url) { result in
