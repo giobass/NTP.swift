@@ -28,7 +28,7 @@
 import Foundation
 
 /// A client for querying Network Time Protocol (NTP) servers.
-public class NtpClient {
+open class NtpClient {
 
     // MARK: - Type definition
     
@@ -67,7 +67,7 @@ public class NtpClient {
     /// - Parameters:
     ///   - url: The URL of the NTP server.
     ///   - callback: A closure that receives the result, which is either a `Date` or an error.
-    public func request(_ url: URL, callback: @escaping (Result<Date, Swift.Error>) -> Void) {
+    open func request(_ url: URL, callback: @escaping (Result<Date, Swift.Error>) -> Void) {
         let task = session.dataTask(with: url) { data, _, error in
             if let error {
                 callback(.failure(error))
@@ -90,7 +90,7 @@ public class NtpClient {
     /// - Returns: The current date as provided by the NTP server.
     /// - Throws: An error if the request fails.
     @available(iOS 13, *)
-    public func request(_ url: URL) async throws -> Date {
+    open func request(_ url: URL) async throws -> Date {
         try await withCheckedThrowingContinuation { continuation in
             request(url) { result in
                 continuation.resume(with: result)
