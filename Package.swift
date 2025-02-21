@@ -30,5 +30,9 @@ let package = Package(
                 "NTP"
             ]
         )
+    ],
+    swiftLanguageVersions: [
+        .v5,
+        .version("6")
     ]
 )

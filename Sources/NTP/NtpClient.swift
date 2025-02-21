@@ -41,7 +41,7 @@ open class NtpClient {
     // MARK: - Properties
     
     /// The URLSession used for making network requests.
-    var session: URLSession!
+    let session: URLSession
     
     // MARK: - Initialization
     
@@ -67,7 +67,7 @@ open class NtpClient {
     /// - Parameters:
     ///   - url: The URL of the NTP server.
     ///   - callback: A closure that receives the result, which is either a `Date` or an error.
-    open func request(_ url: URL, callback: @escaping (Result<Date, Swift.Error>) -> Void) {
+    open func request(_ url: URL, callback: @escaping @Sendable (Result<Date, Swift.Error>) -> Void) {
         let task = session.dataTask(with: url) { data, _, error in
             if let error {
                 callback(.failure(error))

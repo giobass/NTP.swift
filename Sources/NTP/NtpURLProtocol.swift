@@ -27,9 +27,12 @@
 
 import Foundation
 import Network
+
+/// A shared global lock to guarantee thread safety.
+private let globalLock = NSLock()
  
 /// A custom URL protocol for handling NTP requests.
-class NtpURLProtocol: URLProtocol {
+class NtpURLProtocol: URLProtocol, @unchecked Sendable {
 
     // MARK: - Type definition
     
@@ -60,12 +63,14 @@ class NtpURLProtocol: URLProtocol {
     // MARK: - Registration
     
     /// Indicates whether the protocol has been registered.
-    static var registered: Bool = false
+    nonisolated(unsafe) private static var registered: Bool = false
     
     /// Registers the protocol class.
     ///
     /// - Returns: `true` if registration is successful, otherwise `false`.
     static func registerClass() -> Bool {
+        globalLock.lock()
+        defer { globalLock.unlock() }
         guard !registered else {
             return true
         }
@@ -103,6 +108,8 @@ class NtpURLProtocol: URLProtocol {
     // MARK: - Control
     
     override func startLoading() {
+        globalLock.lock()
+        defer { globalLock.unlock() }
         do {
             guard let url = request.url else { throw Error.noURL }
             guard let host = url.host else { throw Error.noHost }
@@ -124,6 +131,8 @@ class NtpURLProtocol: URLProtocol {
     }
     
     override func stopLoading() {
+        globalLock.lock()
+        defer { globalLock.unlock() }
         connection?.cancel()
         connection = nil
     }
@@ -134,6 +143,8 @@ class NtpURLProtocol: URLProtocol {
     ///
     /// - Parameter state: The new state of the connection.
     func connectionChanged(to state: NWConnection.State) {
+        globalLock.lock()
+        defer { globalLock.unlock() }
         switch state {
             case .cancelled:
                 if !completed {
@@ -174,6 +185,8 @@ class NtpURLProtocol: URLProtocol {
                  _ context: NWConnection.ContentContext?,
                  _ isComplete: Bool,
                  _ error: NWError?) {
+        globalLock.lock()
+        defer { globalLock.unlock() }
         if let error {
             client?.urlProtocol(self, didFailWithError: error)
             return
