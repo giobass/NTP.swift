@@ -1,6 +1,6 @@
 # NTP
 
-![Cocoapods Version](https://img.shields.io/cocoapods/v/NTP.swift)
+![Cocoapods Version](https://img.shields.io/cocoapods/v/NTP)
 ![GitHub Release](https://img.shields.io/github/v/release/danielepantaleone/NTP.swift)
 ![GitHub License](https://img.shields.io/github/license/danielepantaleone/NTP.swift)
 
