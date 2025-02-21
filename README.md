@@ -40,7 +40,7 @@ do {
 ### Cocoapods
 
 ```ruby
-pod 'NTP.swift', '~> 1.0.0'
+pod 'NTP', '~> 1.0.0'
 ```
 
 ### Swift Package Manager
