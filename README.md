@@ -3,7 +3,6 @@
 ![Cocoapods Version](https://img.shields.io/cocoapods/v/NTP.swift)
 ![GitHub Release](https://img.shields.io/github/v/release/danielepantaleone/NTP.swift)
 ![GitHub License](https://img.shields.io/github/license/danielepantaleone/NTP.swift)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/danielepantaleone/NTP.swift/swift-tests.yml)
 
 NTP.swift is a Swift library that queries NTP (Network Time Protocol) servers to obtain the accurate current date and time. 
 It provides a simple and efficient way to synchronize system time with reliable NTP sources, ensuring precise timekeeping for applications 
