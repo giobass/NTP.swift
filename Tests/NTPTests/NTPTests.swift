@@ -25,115 +25,67 @@
 //  THE SOFTWARE.
 //
 
-import XCTest
+import Foundation
+import Network
+import Testing
 
 @testable import NTP
 
-final class NTPTests: XCTestCase {
-    
-    // MARK: - Properties
-    
-    var ntpClient: NtpClient!
-    
-    // MARK: - Initialization
-    
-    override func setUp() {
-        super.setUp()
-        ntpClient = NtpClient(timeoutIntervalForRequest: 10)
-    }
-    
-    override func tearDown() {
-        ntpClient = nil
-        super.tearDown()
-    }
+struct NTPTests {
     
     // MARK: - Tests
     
-    func testNtpApple() {
-        test(url: "ntp://time.apple.com")
-    }
-    
-    func testNtpAppleEuro() {
-        test(url: "ntp://time.euro.apple.com")
-    }
-    
-    func testGoogleNtp1() {
-        test(url: "ntp://time1.google.com")
-    }
-    
-    func testGoogleNtp2() {
-        test(url: "ntp://time1.google.com")
-    }
-    
-    func testGoogleNtp3() {
-        test(url: "ntp://time1.google.com")
-    }
-    
-    func testGoogleNtp4() {
-        test(url: "ntp://time1.google.com")
-    }
-    
-    func testCloudflare() {
-        test(url: "ntp://time.cloudflare.com")
-    }
-    
-    // MARK: - Asynchronous tests
-    
-    func testNtpAppleAsync() async throws {
+    @Test
+    func testNtpApple() async throws {
         try await test(url: "ntp://time.apple.com")
     }
     
-    func testNtpAppleEuroAsync() async throws {
+    @Test
+    func testNtpAppleEuro() async throws {
         try await test(url: "ntp://time.euro.apple.com")
     }
     
-    func testGoogleNtp1Async() async throws {
+    @Test
+    func testGoogleNtp1() async throws {
         try await test(url: "ntp://time1.google.com")
     }
     
-    func testGoogleNtp2Async() async throws {
+    @Test
+    func testGoogleNtp2() async throws {
         try await test(url: "ntp://time1.google.com")
     }
     
-    func testGoogleNtp3Async() async throws {
+    @Test
+    func testGoogleNtp3() async throws {
         try await test(url: "ntp://time1.google.com")
     }
     
-    func testGoogleNtp4Async() async throws {
+    @Test
+    func testGoogleNtp4() async throws {
         try await test(url: "ntp://time1.google.com")
     }
     
-    func testCloudflareAsync() async throws {
+    @Test
+    func testCloudflare() async throws {
         try await test(url: "ntp://time.cloudflare.com")
+    }
+    
+    @Test
+    func testInvalidNtpService() async throws {
+        await #expect(throws: Error.self) {
+            try await test(url: "ntp://time.invalid-server.com")
+        }
     }
     
     // MARK: - Internals
     
-    func test(url: String) {
-        let expectation = expectation(description: "waiting for NTP server '\(url)' to provide current datetime")
-        ntpClient.request(URL(string: url)!) { result in
-            switch result {
-                case .success(let date):
-                    let local = Date()
-                    let difference = abs(date.timeIntervalSince(local))
-                    if difference < 1.0 {
-                        expectation.fulfill()
-                    } else {
-                        XCTFail("Local date time and NTP server datetime differ by \(difference) seconds: LOCAL=\(local), NTP=\(date)")
-                    }
-                case .failure(let error):
-                    XCTFail("Failed to retrieve current datetime from NTP server '\(url)': \(error)")
-            }
-        }
-        wait(for: [expectation], timeout: 10)
-    }
-    
     func test(url: String) async throws {
+        let ntpClient: NtpClient = NtpClient(timeoutIntervalForRequest: 10)
         let date = try await ntpClient.request(URL(string: url)!)
         let local = Date()
         let difference = abs(date.timeIntervalSince(local))
         if difference >= 1.0 {
-            XCTFail("Local date time and NTP server datetime differ by \(difference) seconds: LOCAL=\(local), NTP=\(date)")
+            Issue.record("Local date time and NTP server datetime differ by \(difference) seconds: LOCAL=\(local), NTP=\(date)")
         }
     }
     
