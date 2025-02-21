@@ -1,5 +1,7 @@
 # NTP
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdanielepantaleone%2FNTP.swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/danielepantaleone/NTP.swift)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdanielepantaleone%2FNTP.swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/danielepantaleone/NTP.swift)
 ![Cocoapods Version](https://img.shields.io/cocoapods/v/NTP)
 ![GitHub Release](https://img.shields.io/github/v/release/danielepantaleone/NTP.swift)
 ![GitHub License](https://img.shields.io/github/license/danielepantaleone/NTP.swift)
