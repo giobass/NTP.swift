@@ -16,7 +16,7 @@ that require accurate timestamps.
 * [Installation](#installation)
     * [Cocoapods](#cocoapods)
     * [Swift package manager](#swift-package-manager)
-* [Documentation](https://danielepantaleone.github.io/NTP.swift/documentation/blueconnect/)
+* [Documentation](https://danielepantaleone.github.io/NTP.swift/documentation/ntp/)
 * [Contributing](#contributing)
 * [License](#license)
 
