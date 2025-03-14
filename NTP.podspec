@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                        = "NTP"
-  s.version                     = "1.0.0"
+  s.version                     = "1.1.0"
   s.summary                     = "A simple NTP client written in swift"
   s.license                     = { :type => "MIT", :file => "LICENSE" }
   s.homepage                    = "https://github.com/danielepantaleone/NTP.swift"

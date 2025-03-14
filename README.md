@@ -42,14 +42,14 @@ do {
 ### Cocoapods
 
 ```ruby
-pod 'NTP', '~> 1.0.0'
+pod 'NTP', '~> 1.1.0'
 ```
 
 ### Swift Package Manager
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/danielepantaleone/NTP.swift.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/danielepantaleone/NTP.swift.git", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 
