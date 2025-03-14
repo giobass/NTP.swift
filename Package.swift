@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "NTP", targets: ["NTP"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.58.0"),
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.58.2"),
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.3"),
     ],
     targets: [
