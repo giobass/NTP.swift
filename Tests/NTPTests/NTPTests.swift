@@ -71,6 +71,26 @@ struct NTPTests {
     }
     
     @Test
+    func testNtpPool0() async throws {
+        try await test(url: "ntp://0.pool.ntp.org")
+    }
+    
+    @Test
+    func testNtpPool1() async throws {
+        try await test(url: "ntp://1.pool.ntp.org")
+    }
+    
+    @Test
+    func testNtpPool2() async throws {
+        try await test(url: "ntp://2.pool.ntp.org")
+    }
+    
+    @Test
+    func testNtpPool3() async throws {
+        try await test(url: "ntp://3.pool.ntp.org")
+    }
+    
+    @Test
     func testInvalidNtpService() async throws {
         await #expect(throws: Error.self) {
             try await test(url: "ntp://time.invalid-server.com")
