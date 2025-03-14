@@ -28,13 +28,13 @@
 import Foundation
 
 /// A structure representing a 32-bit NTP timestamp, composed of a whole part and a fractional part.
-struct NtpTime32 {
+struct NtpTime32: Sendable {
     
     /// The whole part of the NTP timestamp.
-    var whole: UInt16
+    let whole: UInt16
     
     /// The fractional part of the NTP timestamp.
-    var fraction: UInt16
+    let fraction: UInt16
     
     /// Returns a new `NtpTime32` instance with byte-swapped values for both the whole and fractional parts.
     var byteSwapped: NtpTime32 {

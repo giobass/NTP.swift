@@ -28,18 +28,16 @@
 import Foundation
 
 /// A structure representing a 64-bit NTP timestamp, composed of a whole part and a fractional part.
-struct NtpTime64 {
+struct NtpTime64: Sendable {
     
     /// The whole part of the NTP timestamp.
-    var whole: UInt32
+    let whole: UInt32
     
     /// The fractional part of the NTP timestamp.
-    var fraction: UInt32
+    let fraction: UInt32
     
     /// Returns a new `NtpTime64` instance with byte-swapped values for both the whole and fractional parts.
-    var byteSwapped: NtpTime64 {
-        return NtpTime64(whole: whole.byteSwapped, fraction: fraction.byteSwapped)
-    }
+    var byteSwapped: NtpTime64 { NtpTime64(whole: whole.byteSwapped, fraction: fraction.byteSwapped) }
     
     /// Converts the NTP timestamp to a `TimeInterval`.
     ///

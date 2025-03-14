@@ -28,7 +28,7 @@
 import Foundation
 
 /// A structure representing an NTP packet, containing various timestamp fields and metadata.
-struct NtpPacket {
+struct NtpPacket: Sendable {
     
     /// The flags field, containing information about the NTP version, mode, and leap indicator.
     var flags: UInt8 = 0b10011011
