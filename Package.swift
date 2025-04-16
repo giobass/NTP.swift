@@ -12,18 +12,8 @@ let package = Package(
     products: [
         .library(name: "NTP", targets: ["NTP"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.58.2"),
-        .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.3"),
-    ],
     targets: [
-        .target(
-            name: "NTP",
-            dependencies: [],
-            plugins: [
-                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
-            ]
-        ),
+        .target(name: "NTP"),
         .testTarget(
             name: "NTPTests",
             dependencies: [

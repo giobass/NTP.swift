@@ -1,6 +1,13 @@
 Release Notes
 =============
 
+## 1.2.0
+
+Released April 16, 2025
+
+- Removed Swiftlint dependency
+- Removed SwiftDocC plugin dependency
+
 ## 1.1.0
 
 Released March 14, 2025
