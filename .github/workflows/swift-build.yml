@@ -1,0 +1,39 @@
+name: Swift Build
+on:
+  push:
+    branches:
+      - 'master'
+    paths-ignore:
+      - 'NTP.podspec'
+      - 'Banner.png'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'LICENSE'
+      - '.periphery.yml'
+      - '.spy.yml'
+      - '.swiftlint.yml'
+      - '.gitignore'
+  pull_request:
+    branches: 
+      - '*'
+    types: [opened, reopened]
+  workflow_dispatch:
+jobs:
+  tests:
+    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+        swift: ["5.9", "5.10", "6.0"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Setup swift version ${{ matrix.swift }}
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: ${{ matrix.swift }}
+      - name: Check swift version
+        run: swift --version
+      - name: Repository checkout
+        uses: actions/checkout@v4
+      - name: Build
+        run: swift build
