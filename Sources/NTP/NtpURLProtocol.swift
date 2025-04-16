@@ -32,7 +32,7 @@ import Network
 private let globalLock = NSLock()
  
 /// A custom URL protocol for handling NTP requests.
-class NtpURLProtocol: URLProtocol, @unchecked Sendable {
+final class NtpURLProtocol: URLProtocol, @unchecked Sendable {
 
     // MARK: - Type definition
     
