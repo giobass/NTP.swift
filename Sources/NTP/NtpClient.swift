@@ -48,15 +48,22 @@ open class NtpClient {
     /// Creates an instance of `NtpClient` with a custom timeout interval.
     ///
     /// - Parameter timeoutIntervalForRequest: The timeout interval for network requests. Defaults to `15.0` seconds.
-    public init(timeoutIntervalForRequest: TimeInterval = 15.0) {
-        guard NtpURLProtocol.registerClass() else {
-            fatalError("Failed to register NTP url protocol")
-        }
+    public convenience init(timeoutIntervalForRequest: TimeInterval = 15.0) {
         let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses?.insert(NtpURLProtocol.self, at: 0)
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         configuration.timeoutIntervalForRequest = timeoutIntervalForRequest
         configuration.urlCache = nil
+        self.init(configuration: configuration)
+    }
+    
+    /// Initializes a new `NtpClient` instance with the given configuration.
+    ///
+    /// - Parameter configuration: The `URLSessionConfiguration` to use.
+    public init(configuration: URLSessionConfiguration) {
+        guard NtpURLProtocol.registerClass() else {
+            fatalError("Failed to register NTP url protocol")
+        }
+        configuration.protocolClasses?.append(NtpURLProtocol.self)
         session = URLSession(configuration: configuration)
     }
     

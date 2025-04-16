@@ -5,6 +5,7 @@ Release Notes
 
 Released April 16, 2025
 
+- Allow to specify custom URLSessionConfiguration to provide mocking of NTP requests
 - Removed Swiftlint dependency
 - Removed SwiftDocC plugin dependency
 
