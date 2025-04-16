@@ -48,17 +48,14 @@ class NtpURLProtocol: URLProtocol, @unchecked Sendable {
     
     // MARK: - Properties
     
-    /// The network endpoint for the NTP request.
-    var endpoint: NWEndpoint?
-    
     /// The network connection for the NTP request.
-    var connection: NWConnection?
+    private var connection: NWConnection?
     
     /// A flag indicating if the request has been completed.
-    var completed: Bool = false
+    private var completed: Bool = false
     
     /// The time interval between 1900 and 1970 in seconds.
-    let timeFrom1900to1970 = 2_208_988_800.0
+    private let timeFrom1900to1970 = 2_208_988_800.0
 
     // MARK: - Registration
     
@@ -182,7 +179,7 @@ class NtpURLProtocol: URLProtocol, @unchecked Sendable {
     ///   - isComplete: Indicates whether the message is complete.
     ///   - error: An error that occurred during reception.
     func receive(_ message: Data?,
-                 _ context: NWConnection.ContentContext?,
+                 _ : NWConnection.ContentContext?,
                  _ isComplete: Bool,
                  _ error: NWError?) {
         globalLock.lock()
