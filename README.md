@@ -1,4 +1,4 @@
-# NTP
+![](https://github.com/danielepantaleone/NTP.swift/blob/master/Banner.png?raw=true)
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdanielepantaleone%2FNTP.swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/danielepantaleone/NTP.swift)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdanielepantaleone%2FNTP.swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/danielepantaleone/NTP.swift)
@@ -8,8 +8,7 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/danielepantaleone/NTP.swift/swift-build.yml)
 
 NTP.swift is a Swift library that queries NTP (Network Time Protocol) servers to obtain the accurate current date and time. 
-It provides a simple and efficient way to synchronize system time with reliable NTP sources, ensuring precise timekeeping for applications 
-that require accurate timestamps.
+It provides a simple and efficient way to synchronize system time with reliable NTP sources, ensuring precise timekeeping for applications that require accurate timestamps.
 
 ## Table of contents
 
